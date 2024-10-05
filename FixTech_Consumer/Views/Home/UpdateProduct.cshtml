@@ -1,0 +1,110 @@
+﻿@model TechCom.Models.Product
+
+@{
+    ViewBag.Title = "UpdateProduct";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <br /><br />
+    <div class="form-horizontal shadow-box" style="width: 60%; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); background-color: #f8f9fa;">
+        <h4 class="text-center text text-green ">UPDATE ADDED PRODUCT DETAILS</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProductID)
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Serial_NO, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Serial_NO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Serial_NO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Warranty_Period, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Warranty_Period, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Warranty_Period, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.SupplierID, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.SupplierID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SupplierID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group row text-center">
+            <div class="col-md-12">
+                <input type="submit" value="Update Now" class="btn-edit" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .shadow-box {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        background-color: #f8f9fa; /* Light gray background */
+        border-radius: 10px;
+    }
+
+    .btn-primary {
+        background-color: blue;
+        color: white;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .form-horizontal {
+        margin: 0 auto;
+    }
+
+    h2, h4 {
+        color: #333; /* Darker text for headings */
+    }
+
+    .btn-edit {
+        background-color: darkgreen;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        .btn-edit:hover {
+            background-color: green;
+        }
+</style>

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<TechCom.Models.Product>
+
+@{
+    ViewBag.Title = "GetProducts";
+}
+<br />
+
+<h3 class="text-center text text-green">VIEW ALL PRODUCT DETAILS</h3>
+
+<style>
+    .text-green {
+        color: green; /* Set the text color to green */
+    }
+</style>
+<style>
+    /* Style for buttons */
+    .btn-create {
+        background-color: blue;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .btn-edit {
+        background-color: darkgreen;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .btn-delete {
+        background-color: red;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    /* Style for table */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .table th {
+            background-color: black;
+            color: white; /* Ensure the text is readable */
+            text-align: center;
+            padding: 10px;
+        }
+
+        .table td {
+            text-align: center;
+            padding: 10px;
+        }
+</style>
+
+<br />
+<p>
+    <a href="@Url.Action("AddProduct")" class="btn-create">Add New Product for TechFix</a>
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ProductID)</th>
+        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+        <th>@Html.DisplayNameFor(model => model.Category)</th>
+        <th>@Html.DisplayNameFor(model => model.Price)</th>
+        <th>@Html.DisplayNameFor(model => model.Serial_NO)</th>
+        <th>@Html.DisplayNameFor(model => model.Warranty_Period)</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ProductID)</td>
+            <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Category)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.Serial_NO)</td>
+            <td>@Html.DisplayFor(modelItem => item.Warranty_Period)</td>
+            <td>
+                <a href="@Url.Action("UpdateProduct", new { id = item.ProductID })" class="btn-edit">Update</a> |
+                <a href="@Url.Action("DeleteProduct", new { id = item.ProductID })" class="btn-delete">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<!-- Footer Section -->
+<footer style="background-color: black; color: white; text-align: center; padding: 10px;">
+    © 2024 - My ASP.NET Application
+</footer>

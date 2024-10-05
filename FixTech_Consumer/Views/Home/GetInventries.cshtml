@@ -1,0 +1,102 @@
+﻿@model IEnumerable<TechCom.Models.Inventory>
+
+@{
+    ViewBag.Title = "GetInventries";
+}
+
+<h3 class="text-center text text-green">VIEW ALL TECH FIX INVENORTY REQUESTS </h3>
+
+<style>
+    .text-green {
+        color: green; /* Set the text color to green */
+    }
+</style>
+
+<br />
+<table class="table text-center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupplierID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INserial_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InventoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InventoryValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.INserial_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventoryValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <br />
+                <a href="@Url.Action("DeleteInventory", new { id = item.InventoryID})" class="btn-delete text-center">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<!-- Footer Section -->
+<footer style="background-color: black; color: white; text-align: center; padding: 10px;">
+    © 2024 - My ASP.NET Application
+</footer>
+
+<style>
+    .table th {
+        background-color: black;
+        color: white; /* Ensure the text is readable */
+        text-align: center;
+        padding: 10px;
+    }
+
+    .btn-delete {
+        background-color: red;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
